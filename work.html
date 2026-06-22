@@ -51,7 +51,8 @@
     font-size:clamp(16px,2vw,20px);margin-top:18px}
 
   /* ---- PROJECTS ---- */
-  .projects{padding-bottom:clamp(60px,9vw,120px)}
+  .projects{padding-top:clamp(40px,6vw,72px);padding-bottom:clamp(60px,9vw,120px)}
+  .projects .project:first-of-type{border-top:none}
   .project{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,76px);
     align-items:center;padding:clamp(46px,7vw,90px) 0;border-top:1px solid var(--line)}
   .project:nth-child(even) .p-media{order:2}
@@ -124,20 +125,13 @@
   <div class="wrap">
     <a href="index.html" class="brand">İpek Nal</a>
     <div class="nav-links">
-      <a href="work.html" class="active">Work</a>
+      <a href="work.html" class="active">Works</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
     </div>
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
-<header class="page-head">
-  <div class="wrap">
-    <h1 class="title reveal">Work</h1>
-    <p class="sub reveal">Selected projects — digital products, interfaces and brands.</p>
-  </div>
-</header>
 
 <section class="projects">
   <div class="wrap">
