@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nereye — İpek Nal</title>
+<meta name="description" content="Nereye — a live civic tool for Istanbul. Project by İpek Nal." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf7f0;--ink:#111111;--muted:#807b71;--accent:#c01d18;--accent-dark:#971310;--line:#ece6da;--maxw:1120px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.6;font-size:17px;font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:'Cormorant',Georgia,serif;font-size:25px;font-weight:600}
+  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+
+  .detail-head{text-align:center;padding:clamp(64px,10vw,120px) 0 clamp(28px,4vw,46px)}
+  .detail-head .p-num{font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.18em;color:var(--accent);font-weight:500}
+  .detail-head .title{font-family:'Cormorant',Georgia,serif;font-weight:400;color:var(--ink);
+    font-size:clamp(46px,8vw,96px);line-height:1;letter-spacing:-.01em;margin-top:10px}
+  .detail-head .cat{font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;margin-top:14px;display:inline-block}
+
+  .cover{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .cover img{width:100%;border-radius:12px;display:block;border:1px solid var(--line)}
+
+  .detail-body{max-width:720px;margin:0 auto;padding:clamp(38px,6vw,68px) 28px 0;text-align:center}
+  .detail-body .lead{font-family:'DM Sans',sans-serif;font-weight:300;font-size:clamp(19px,2.3vw,25px);
+    line-height:1.45;color:var(--ink);margin-bottom:24px}
+  .detail-body p{color:#3a3a3a;font-size:17px;line-height:1.75;margin-bottom:16px}
+
+  .gallery{max-width:880px;margin:clamp(36px,5vw,60px) auto 0;padding:0 28px;display:grid;gap:clamp(20px,3vw,34px)}
+  .gallery img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+
+  .behance{text-align:center;padding:clamp(40px,6vw,68px) 28px}
+  .btn-red{display:inline-block;background:var(--accent);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:17px;padding:16px 40px;border-radius:999px;border:1px solid var(--ink);box-shadow:0 6px 16px rgba(0,0,0,.16);
+    transition:background .2s,transform .2s,box-shadow .2s}
+  .btn-red:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.22)}
+  .embed-wrap{margin-top:clamp(28px,4vw,44px);display:flex;justify-content:center}
+  .embed-wrap iframe{max-width:100%;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+
+  .detail-foot{text-align:center;padding:clamp(30px,5vw,60px) 0;border-top:1px solid var(--line)}
+  .back-link{display:inline-block;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);transition:color .2s}
+  .back-link:hover{color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);text-align:center;padding:40px 0;font-size:13px;color:var(--muted)}
+
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  @media(max-width:760px){.nav-links{gap:20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand">İpek Nal</a>
+    <div class="nav-links">
+      <a href="work.html">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="detail-head">
+  <div class="wrap">
+    <span class="p-num reveal">01</span>
+    <h1 class="title reveal">Nereye</h1>
+    <span class="cat reveal">Civic Tool · Framer</span>
+  </div>
+</header>
+
+<section class="detail-body reveal">
+  <p class="lead">Nereye is a live civic tool that helps Istanbul residents find the nearest recycling and waste disposal points by category and district.</p>
+  <p>Built entirely in Framer, the project was born from a real frustration: official municipality websites make it unnecessarily hard to find this information.</p>
+  <p>The solution — a single-page, filterable directory — went live in beta and is actively maintained.</p>
+</section>
+
+<section class="gallery reveal">
+  <img src="assets/nereye-1.jpg" alt="Nereye — interface">
+</section>
+
+<section class="behance">
+  <a href="https://www.behance.net/gallery/247945431/Nereye" target="_blank" rel="noopener" class="btn-red reveal">View on Behance</a>
+  <div class="embed-wrap reveal">
+    <iframe src="https://www.behance.net/embed/project/247945431?ilo0=1" height="376" width="480" allowfullscreen lazyload frameborder="0" allow="clipboard-write" referrerPolicy="strict-origin-when-cross-origin" title="Nereye on Behance"></iframe>
+  </div>
+</section>
+
+<section class="detail-foot">
+  <div class="wrap"><a href="work.html" class="back-link reveal">← Back to work</a></div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> İpek Nal — made with love, powered by coffee</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:0.12, rootMargin:"0px 0px -10% 0px"});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+</script>
+</body>
+</html>

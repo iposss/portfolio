@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Work — İpek Nal</title>
+<meta name="description" content="Selected work by İpek Nal — UI/UX & digital product design." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf7f0;
+    --ink:#111111;
+    --muted:#807b71;
+    --accent:#c01d18;
+    --accent-dark:#971310;
+    --line:#ece6da;
+    --maxw:1120px;
+    --gap:clamp(80px,12vw,150px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);color:var(--ink);
+    line-height:1.6;font-size:17px;font-weight:300;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+
+  .eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h2{font-family:'Cormorant',Georgia,serif;font-weight:500;
+     font-size:clamp(34px,4.8vw,52px);line-height:1.1;letter-spacing:-.01em}
+
+  /* ---- NAV ---- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:'Cormorant',Georgia,serif;font-size:25px;font-weight:600;letter-spacing:0}
+  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+
+  /* ---- PAGE HEAD ---- */
+  .page-head{text-align:center;padding:clamp(70px,11vw,140px) 0 clamp(40px,6vw,70px)}
+  .page-head .title{font-family:'Cormorant',Georgia,serif;font-weight:400;color:var(--ink);
+    font-size:clamp(50px,9.5vw,104px);line-height:1;letter-spacing:-.01em}
+  .page-head .sub{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--muted);
+    font-size:clamp(16px,2vw,20px);margin-top:18px}
+
+  /* ---- PROJECTS ---- */
+  .projects{padding-bottom:clamp(60px,9vw,120px)}
+  .project{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,76px);
+    align-items:center;padding:clamp(46px,7vw,90px) 0;border-top:1px solid var(--line)}
+  .project:nth-child(even) .p-media{order:2}
+  .p-media{display:block;border-radius:10px;overflow:hidden;background:#f2ede3;border:1px solid var(--line);
+    aspect-ratio:4/3}
+  .p-link{display:inline-block;margin-top:6px;font-family:'DM Sans',sans-serif;font-weight:600;
+    font-size:14px;letter-spacing:.02em;color:var(--accent);transition:opacity .2s}
+  .p-link:hover{opacity:.7}
+  .p-media img{width:100%;height:100%;object-fit:cover;display:block;
+    filter:grayscale(100%) contrast(1.03);transition:filter .5s ease,transform .6s ease}
+  .project:hover .p-media img{filter:grayscale(0%);transform:scale(1.02)}
+  .p-num{font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.18em;
+    color:var(--accent);font-weight:500}
+  .p-title{font-family:'Cormorant',Georgia,serif;font-weight:500;
+    font-size:clamp(36px,4.6vw,54px);line-height:1.04;letter-spacing:-.01em;margin:12px 0 6px}
+  .p-cat{font-family:'DM Sans',sans-serif;font-size:12.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);font-weight:500}
+  .p-lead{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);
+    font-size:clamp(18px,2.1vw,22px);line-height:1.45;margin:22px 0 18px}
+  .p-body p{color:#3a3a3a;font-size:16px;font-weight:300;line-height:1.7;margin-bottom:14px;max-width:52ch}
+
+  /* ---- BACK / CTA ---- */
+  .work-foot{text-align:center;padding:clamp(40px,6vw,80px) 0;border-top:1px solid var(--line)}
+  .work-foot h2{margin-bottom:24px}
+  .btn-red{display:inline-block;background:var(--accent);color:#fff;
+    font-family:'DM Sans',sans-serif;font-weight:700;font-size:17px;
+    padding:16px 40px;border-radius:999px;border:1px solid var(--ink);
+    box-shadow:0 6px 16px rgba(0,0,0,.16);
+    transition:background .2s,transform .2s,box-shadow .2s}
+  .btn-red:hover{background:var(--accent-dark);transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(0,0,0,.22)}
+  .back-link{display:inline-block;margin-top:26px;font-family:'DM Sans',sans-serif;
+    font-size:14px;color:var(--muted);transition:color .2s}
+  .back-link:hover{color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);text-align:center;padding:40px 0;
+    font-size:13px;color:var(--muted)}
+
+  /* ---- scroll reveal ---- */
+  .reveal{opacity:0;transform:translateY(40px);
+    transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  @media(max-width:820px){
+    .nav-links{gap:22px}
+    .project{grid-template-columns:1fr;gap:26px;padding:48px 0}
+    .project:nth-child(even) .p-media{order:0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand">İpek Nal</a>
+    <div class="nav-links">
+      <a href="work.html" class="active">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1 class="title reveal">Work</h1>
+    <p class="sub reveal">Selected projects — digital products, interfaces and brands.</p>
+  </div>
+</header>
+
+<section class="projects">
+  <div class="wrap">
+
+    <!-- NEREYE -->
+    <article class="project reveal" id="nereye">
+      <a class="p-media" href="nereye.html"><img src="assets/nereye.jpg" alt="Nereye"></a>
+      <div class="p-text">
+        <span class="p-num">01</span>
+        <h2 class="p-title"><a href="nereye.html">Nereye</a></h2>
+        <span class="p-cat">Civic Tool · Framer</span>
+        <p class="p-lead">Nereye is a live civic tool that helps Istanbul residents find the nearest recycling and waste disposal points by category and district.</p>
+        <div class="p-body">
+          <p>Built entirely in Framer, the project was born from a real frustration: official municipality websites make it unnecessarily hard to find this information.</p>
+          <p>The solution — a single-page, filterable directory — went live in beta and is actively maintained.</p>
+        </div>
+        <a class="p-link" href="nereye.html">View project →</a>
+      </div>
+    </article>
+
+    <!-- GROWTH -->
+    <article class="project reveal" id="growth">
+      <a class="p-media" href="growth.html"><img src="assets/growth.jpg" alt="Growth"></a>
+      <div class="p-text">
+        <span class="p-num">02</span>
+        <h2 class="p-title"><a href="growth.html">Growth</a></h2>
+        <span class="p-cat">Mobile App · UI/UX</span>
+        <p class="p-lead">Growth is a supportive habit-building app focused on flexibility and stability.</p>
+        <div class="p-body">
+          <p>The app rejects the pressure of streaks and high-stakes perfectionism. We understand that life happens, and missing a day shouldn't derail an entire journey.</p>
+          <p>It's a mindful approach that measures progress through achievable consistency targets rather than punishing daily failures. Users are encouraged to get back on track with positive feedback.</p>
+          <p>The app reflects the fundamental cycle of human progress. It represents a continuous, supportive journey where getting back up is just as important as the initial start.</p>
+        </div>
+        <a class="p-link" href="growth.html">View project →</a>
+      </div>
+    </article>
+
+    <!-- BLEND -->
+    <article class="project reveal" id="blend">
+      <a class="p-media" href="blend.html"><img src="assets/blend.jpg" alt="Blend"></a>
+      <div class="p-text">
+        <span class="p-num">03</span>
+        <h2 class="p-title"><a href="blend.html">Blend</a></h2>
+        <span class="p-cat">Landing Page · Concept</span>
+        <p class="p-lead">Blend is a landing page concept created for a modern skincare brand.</p>
+        <div class="p-body">
+          <p>The aim was to translate the brand's minimal and elegant identity into a digital presence that feels trustworthy, calm, and easy to use.</p>
+          <p>The design process followed a structured path: from moodboard and wireframe to the final UI.</p>
+          <p>I approached the design by simplifying the information flow and focusing on visual clarity.</p>
+        </div>
+        <a class="p-link" href="blend.html">View project →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="work-foot">
+  <div class="wrap">
+    <h2 class="reveal">Got an idea? Let's make it together.</h2>
+    <a href="index.html#contact" class="btn-red reveal">Start a project</a>
+    <div><a href="index.html" class="back-link reveal">← Back to home</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> İpek Nal — made with love and powered by coffee</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:0.12, rootMargin:"0px 0px -10% 0px"});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+</script>
+</body>
+</html>
