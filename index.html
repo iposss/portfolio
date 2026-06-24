@@ -61,18 +61,18 @@
     filter:drop-shadow(0 16px 30px rgba(0,0,0,.18))}
   .hero-obj:hover{transform:scale(1.1) rotate(0deg)!important;z-index:5}
   /* LEFT column (top->bottom): notebook + pen, glasses+coffee, big laptop */
-  .obj-note   {width:clamp(172px,18.5vw,244px);top:3%;  left:1%; transform:rotate(-6deg)}
-  .obj-pen    {width:clamp(80px,8vw,112px);    top:-1%; left:16%;transform:rotate(-34deg)}
-  .obj-coffee {width:clamp(64px,6.6vw,86px);   top:60%; left:17%;transform:rotate(-4deg)}
-  .obj-laptop {width:clamp(192px,20.5vw,262px);top:34%; left:-1%;transform:rotate(-5deg)}
-  .obj-glasses{width:clamp(96px,9.5vw,124px);  bottom:2%;left:6%;z-index:3;transform:rotate(-4deg)}
+  .obj-note   {width:clamp(172px,18.5vw,244px);top:3%;  left:-2%; --r:-6deg;transform:rotate(var(--r));--fx:-55vw;--fy:-40px;--pd:.3s}
+  .obj-pen    {width:clamp(80px,8vw,112px);    top:-1%; left:11%;--r:-34deg;transform:rotate(var(--r));--fx:-35vw;--fy:-80px;--pd:2.8s}
+  .obj-coffee {width:clamp(64px,6.6vw,86px);   top:60%; left:12%;z-index:4;--r:-4deg;transform:rotate(var(--r));--fx:-48vw;--fy:0px;--pd:4.05s}
+  .obj-laptop {width:clamp(192px,20.5vw,262px);top:34%; left:-3%;--r:-5deg;transform:rotate(var(--r));--fx:-62vw;--fy:20px;--pd:1.55s}
+  .obj-glasses{width:clamp(96px,9.5vw,124px);  bottom:2%;left:3%;z-index:3;--r:-4deg;transform:rotate(var(--r));--fx:-58vw;--fy:30px;--pd:5.3s}
   /* RIGHT column (top->bottom): big CD (tilt right, spinning, behind), camera+candle on top, big plant */
-  .obj-cd     {width:clamp(176px,20vw,256px);top:2%;  right:-1%;transform:rotate(9deg)}
+  .obj-cd     {width:clamp(176px,20vw,256px);top:2%;  right:-4%;--r:9deg;transform:rotate(var(--r));--fx:55vw;--fy:-40px;--pd:.95s}
   .obj-cd img {animation:spin 9s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .obj-cam    {width:clamp(130px,14vw,174px);top:33%; right:-6%;z-index:3;transform:rotate(5deg)}
-  .obj-candle {width:clamp(48px,5vw,68px);   top:48%; right:13%; z-index:3;transform:rotate(3deg)}
-  .obj-plant  {width:clamp(232px,26vw,330px);bottom:0%;right:-5%;transform:rotate(-3deg)}
+  .obj-cam    {width:clamp(130px,14vw,174px);top:33%; right:-8%;z-index:3;--r:5deg;transform:rotate(var(--r));--fx:58vw;--fy:0px;--pd:3.45s}
+  .obj-candle {width:clamp(48px,5vw,68px);   top:48%; right:8%; z-index:3;--r:3deg;transform:rotate(var(--r));--fx:46vw;--fy:20px;--pd:4.7s}
+  .obj-plant  {width:clamp(232px,26vw,330px);bottom:0%;right:-7%;--r:-3deg;transform:rotate(var(--r));--fx:60vw;--fy:30px;--pd:2.2s}
   .hero .heading{font-family:'Cormorant',Georgia,serif;font-weight:300;color:var(--ink);
     font-size:clamp(40px,6.8vw,88px);line-height:1.08;letter-spacing:0;
     margin:0 auto;max-width:none;white-space:nowrap}
@@ -96,7 +96,7 @@
   /* ---- MARQUEE (thinner, dot separator, sentence intact) ---- */
   .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);padding:11px 0;margin-top:clamp(40px,7vw,96px)}
-  .marquee-track{display:inline-block;will-change:transform;animation:scroll 30s linear infinite}
+  .marquee-track{display:inline-block;will-change:transform;animation:scroll 60s linear infinite}
   .marquee:hover .marquee-track{animation-play-state:paused}
   .marquee .item{font-family:'DM Sans',sans-serif;font-weight:300;
     font-size:clamp(15px,2.1vw,23px);color:#000;letter-spacing:.06em;text-transform:uppercase}
@@ -113,14 +113,14 @@
     max-width:600px;margin:0 auto}
   .card{display:block;text-align:center}
   .card .frame{aspect-ratio:4/3;width:100%;border-radius:8px;overflow:hidden;
-    background:#f2ede3;border:1px solid var(--line)}
+    background:#f2ede3;box-shadow:0 14px 30px rgba(0,0,0,.12)}
   .card .frame img{width:100%;height:100%;object-fit:cover;display:block;
     filter:grayscale(100%);transition:transform .55s ease}
   .card:hover .frame img{transform:scale(1.04)}
-  .card h3{margin-top:22px}
+  .card h3{margin:22px 0 0}
   .card .cat{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;
     color:var(--accent);font-weight:600;margin-top:8px}
-  .card .desc{font-size:15px;color:var(--ink);font-weight:300;line-height:1.55;max-width:40ch;margin:12px auto 0}
+  .card .desc{font-size:15px;color:var(--ink);font-weight:300;line-height:1.55;max-width:40ch;margin:3px auto 0}
 
   /* ---- ABOUT (objects clustered left & right of the text) ---- */
   .about{text-align:center}
@@ -143,16 +143,37 @@
     72%{transform:rotate(-1deg) translateY(-7px) scale(1.03)}
     100%{transform:rotate(1.4deg) translateY(-8px) scale(1.03)}
   }
-  .about-body{max-width:58ch;margin:0 auto}
+  .about-body{max-width:58ch;margin:0 auto;position:relative;z-index:6}
+  .about .sec-head{position:relative;z-index:6}
   .about-body p{margin-bottom:20px;font-size:18px}
   .about-body p:last-child{margin-bottom:0}
   .about-body .hl{color:var(--accent)}
+  .hl-shine{display:inline-block;color:var(--accent);
+    background-image:linear-gradient(105deg,var(--accent) 0%,var(--accent) 38%,#ff8a82 48%,#fff3f0 50%,#ff8a82 52%,var(--accent) 62%,var(--accent) 100%);
+    background-size:260% 100%;background-position:180% 0;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:hlshine 3.6s ease-in-out infinite}
+  @keyframes hlshine{
+    0%{background-position:180% 0}
+    55%,100%{background-position:-60% 0}
+  }
+  @media(prefers-reduced-motion:reduce){.hl-shine{animation:none;-webkit-text-fill-color:var(--accent)}}
+  .hl-shine-dark{display:inline-block;color:var(--ink);
+    background-image:linear-gradient(105deg,var(--ink) 0%,var(--ink) 40%,#8c8478 48%,#d8d0c2 50%,#8c8478 52%,var(--ink) 60%,var(--ink) 100%);
+    background-size:260% 100%;background-position:180% 0;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:hlshine 3.6s ease-in-out infinite}
+  @media(prefers-reduced-motion:reduce){.hl-shine-dark{animation:none;-webkit-text-fill-color:var(--ink)}}
+  .about .hero-obj{cursor:grab}
+  .about .hero-obj:active{cursor:grabbing}
 
   /* ---- CONTACT (bigger) ---- */
   .contact{text-align:center}
   .contact h2{margin:0 auto;font-size:clamp(36px,6.5vw,72px);white-space:nowrap}
   .contact .email{font-family:'DM Sans',sans-serif;font-weight:400;
-    font-size:clamp(28px,5vw,52px);color:var(--accent);display:inline-block;
+    font-size:clamp(22px,3.6vw,38px);color:var(--accent);display:inline-block;
     margin:34px 0 40px;border-bottom:1px solid transparent;transition:border-color .2s}
   .contact .email:hover{border-color:var(--accent)}
   .socials{display:flex;gap:30px;justify-content:center;font-size:16px;font-weight:500}
@@ -161,13 +182,24 @@
 
   #about{padding-bottom:clamp(40px,6vw,66px)}
 
-  footer{background:var(--accent);border-top:1px solid var(--accent-dark);text-align:center;padding:22px 0;
-    font-size:13px;color:var(--bg)}
+  footer{background:var(--bg);border-top:1px solid var(--line);text-align:center;padding:22px 0;
+    font-size:13px;color:var(--muted)}
 
   /* ---- scroll reveal ---- */
   .reveal{opacity:0;transform:translateY(40px);
     transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
   .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ---- stop-motion assemble (about objects fly in from outside, one by one) ---- */
+  .about .hero-obj{opacity:0}
+  .about.assemble .hero-obj{animation:popIn .7s steps(6,jump-none) both;animation-delay:var(--pd,0s)}
+  @keyframes popIn{
+    from{opacity:0;transform:translate(var(--fx,0),var(--fy,0)) rotate(var(--r,0deg)) scale(.92)}
+    to{opacity:1;transform:translate(0,0) rotate(var(--r,0deg)) scale(1)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .about .hero-obj{opacity:1!important;animation:none!important}
+  }
 
   @media(max-width:1180px){
     .obj-candle,.obj-coffee,.obj-pen,.obj-plant{display:none}
@@ -180,6 +212,7 @@
     .work-grid{grid-template-columns:1fr;gap:48px}
     .hero-badge{display:none}
     .hero .lead{white-space:normal}
+    .hero .heading{white-space:normal;font-size:clamp(34px,9vw,52px)}
     .hero-obj{display:none}
   }
 
@@ -246,7 +279,7 @@
 <header class="hero" id="hero">
   <div class="wrap">
     <div class="hero-center">
-      <h1 class="heading"><span class="hw">I</span> <span class="hw">design</span> <span class="kinetic-word hw">websites</span><br><span class="hw">to</span> <span class="hw">visualize</span> <span class="hw">your</span> <span class="hw">ideas</span></h1>
+      <h1 class="heading"><span class="hw">I</span> <span class="hw">design</span> <span class="kinetic-word hw">websites</span><br><span class="hw">to</span> <span class="hw">bring</span> <span class="hw">your</span> <span class="hw">ideas</span> <span class="hw">to</span> <span class="hw">life</span></h1>
       <div class="hero-cta hw">
         <a href="#contact" class="btn-red">Start Project</a>
       </div>
@@ -257,12 +290,12 @@
 <!-- MARQUEE -->
 <div class="marquee reveal">
   <div class="marquee-track">
-    <span class="item">Show works for colors and more</span><span class="dot">•</span>
-    <span class="item">Show works for colors and more</span><span class="dot">•</span>
-    <span class="item">Show works for colors and more</span><span class="dot">•</span>
-    <span class="item">Show works for colors and more</span><span class="dot">•</span>
-    <span class="item">Show works for colors and more</span><span class="dot">•</span>
-    <span class="item">Show works for colors and more</span><span class="dot">•</span>
+    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Interaction Design</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Visual Identity</span><span class="dot">•</span>
+    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Interaction Design</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Visual Identity</span><span class="dot">•</span>
+    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Interaction Design</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Visual Identity</span><span class="dot">•</span>
+    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Interaction Design</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Visual Identity</span><span class="dot">•</span>
+    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Interaction Design</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Visual Identity</span><span class="dot">•</span>
+    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Interaction Design</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Visual Identity</span><span class="dot">•</span>
   </div>
 </div>
 
@@ -296,25 +329,23 @@
 <section id="about" class="about">
   <div class="wrap">
     <!-- left cluster -->
-    <span class="hero-obj obj-note reveal"><img src="assets/defter.png" alt="" aria-hidden="true"></span>
-    <span class="hero-obj obj-pen reveal"><img src="assets/kalem.png" alt="" aria-hidden="true"></span>
-    <span class="hero-obj obj-glasses reveal"><img src="assets/glasses.png" alt="" aria-hidden="true"></span>
-    <span class="hero-obj obj-coffee reveal"><img src="assets/kahve.png" alt="" aria-hidden="true"></span>
-    <span class="hero-obj obj-laptop reveal"><img src="assets/laptop.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-note"><img src="assets/defter.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-pen"><img src="assets/kalem.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-glasses"><img src="assets/glasses.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-coffee"><img src="assets/kahve.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-laptop"><img src="assets/laptop.png" alt="" aria-hidden="true"></span>
     <!-- right cluster -->
-    <span class="hero-obj obj-cam reveal"><img src="assets/cam.png" alt="" aria-hidden="true"></span>
-    <span class="hero-obj obj-candle reveal"><img src="assets/candle.png" alt="" aria-hidden="true"></span>
-    <span class="hero-obj obj-plant reveal"><img src="assets/plants.png" alt="" aria-hidden="true"></span>
-    <span class="hero-obj obj-cd reveal"><img src="assets/cd.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-cam"><img src="assets/cam.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-candle"><img src="assets/candle.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-plant"><img src="assets/plants.png" alt="" aria-hidden="true"></span>
+    <span class="hero-obj obj-cd"><img src="assets/cd.png" alt="" aria-hidden="true"></span>
     <div class="sec-head">
-      <span class="eyebrow reveal">About</span>
+      <span class="eyebrow reveal">About Me</span>
     </div>
     <div class="about-body reveal">
-      <p>Designer based in Istanbul.</p>
-      <p>I help visualize your ideas and shape them into real digital products.</p>
-      <p>Studied film design at fine arts faculty — that's where I discovered my love for visualizing ideas and building digital products from scratch.</p>
-      <p>I love capturing moments, collecting memories, and every form of creativity. Detail-driven, multidisciplinary, and always up for a good idea.</p>
-      <p><span class="hl" style="font-weight:600">Let's connect and create together!</span></p>
+      <p>Hey! It's İpek, designer based in İstanbul. I help brands and founders turn their ideas into beautiful digital products: websites, landing pages, apps, and the brand identity around them.</p>
+      <p>Studied film design at fine arts faculty and that's where I discovered my love for visualizing ideas and building digital products from scratch. I love capturing moments, collecting memories, and every form of creativity.</p>
+      <p>I design and build, turning your idea into a real, working product. Detail-driven and always up for a new project.</p>
     </div>
   </div>
 </section>
@@ -322,7 +353,7 @@
 <!-- CONTACT -->
 <section id="contact" class="contact">
   <div class="wrap">
-    <h2 class="reveal">Got an idea?<br>Let's create together.</h2>
+    <h2 class="reveal">Got an idea?<br>Let's create together!</h2>
     <a class="email reveal" href="mailto:ipeknall@hotmail.com">ipeknall@hotmail.com</a>
     <div class="socials reveal">
       <a href="https://www.linkedin.com/in/ipeknal" target="_blank" rel="noopener">LinkedIn</a>
@@ -347,6 +378,19 @@
       });
     },{threshold:0.12, rootMargin:"0px 0px -10% 0px"});
     els.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* stop-motion assemble trigger for about objects */
+  (function(){
+    var about = document.querySelector('.about');
+    if(!about) return;
+    if(!('IntersectionObserver' in window)){ about.classList.add('assemble'); return; }
+    var ao = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ about.classList.add('assemble'); ao.disconnect(); }
+      });
+    },{threshold:0.18, rootMargin:"0px 0px -8% 0px"});
+    ao.observe(about);
   })();
 
   /* hero kinetic word — typing effect */
@@ -438,6 +482,37 @@ n.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click
     document.querySelectorAll('.card').forEach(function(c){
       c.addEventListener('mouseenter', function(){ dot.classList.add('show'); });
       c.addEventListener('mouseleave', function(){ dot.classList.remove('show'); });
+    });
+  }
+
+  /* draggable about objects */
+  if(!window.matchMedia('(hover:none)').matches && !window.matchMedia('(max-width:900px)').matches){
+    var drag = null, moved = false;
+    document.querySelectorAll('.about .hero-obj').forEach(function(o){
+      o.addEventListener('mousedown', function(e){
+        e.preventDefault();
+        var par = o.offsetParent.getBoundingClientRect();
+        var r = o.getBoundingClientRect();
+        o.style.left = (r.left - par.left) + 'px';
+        o.style.top  = (r.top  - par.top)  + 'px';
+        o.style.right = 'auto'; o.style.bottom = 'auto';
+        o.style.zIndex = 20; o.style.transition = 'none';
+        drag = { el:o, dx:e.clientX - r.left, dy:e.clientY - r.top, px:par.left, py:par.top };
+        moved = false;
+        document.body.style.userSelect = 'none';
+      });
+    });
+    window.addEventListener('mousemove', function(e){
+      if(!drag) return;
+      moved = true;
+      drag.el.style.left = (e.clientX - drag.px - drag.dx) + 'px';
+      drag.el.style.top  = (e.clientY - drag.py - drag.dy) + 'px';
+    });
+    window.addEventListener('mouseup', function(){
+      if(!drag) return;
+      drag.el.style.transition = '';
+      drag = null;
+      document.body.style.userSelect = '';
     });
   }
 })();
