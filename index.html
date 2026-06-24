@@ -197,6 +197,32 @@
     nav.open .nav-links{max-height:320px}
     .nav-links a{padding:16px 28px;border-top:1px solid var(--line);font-size:16px;font-weight:500}
   }
+
+  /* ---- hero staggered intro ---- */
+  .hero .hw{display:inline-block;opacity:0;transform:translateY(30px);
+    transition:opacity .72s cubic-bezier(.22,.61,.36,1),transform .72s cubic-bezier(.22,.61,.36,1)}
+  .hero.loaded .hw{opacity:1;transform:translateY(0)}
+
+  /* ---- staggered scroll-reveal (work cards) ---- */
+  .stagger .reveal{transition-delay:var(--d,0s)}
+
+  /* ---- parallax (about objects) ---- */
+  .hero-obj:not(.obj-cd) img{will-change:transform}
+
+  /* ---- custom "View" cursor ---- */
+  .cursor-dot{position:fixed;top:0;left:0;z-index:200;pointer-events:none;
+    width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;
+    background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;letter-spacing:.05em;
+    transform:scale(0);transition:transform .28s cubic-bezier(.22,.61,.36,1);
+    will-change:transform,left,top}
+  .cursor-dot.show{transform:scale(1)}
+  @media(hover:none),(max-width:760px){.cursor-dot{display:none}}
+
+  @media(prefers-reduced-motion:reduce){
+    .hero .hw{transition:none;opacity:1;transform:none}
+    .cursor-dot{display:none}
+  }
 </style>
 </head>
 <body>
@@ -219,8 +245,8 @@
 <header class="hero" id="hero">
   <div class="wrap">
     <div class="hero-center">
-      <h1 class="heading reveal">I design <span class="kinetic-word">websites</span><br>to visualize your ideas</h1>
-      <div class="hero-cta reveal">
+      <h1 class="heading"><span class="hw">I</span> <span class="hw">design</span> <span class="kinetic-word hw">websites</span><br><span class="hw">to</span> <span class="hw">visualize</span> <span class="hw">your</span> <span class="hw">ideas</span></h1>
+      <div class="hero-cta hw">
         <a href="#contact" class="btn-red">Start Project</a>
       </div>
     </div>
@@ -245,7 +271,7 @@
     <div class="sec-head">
       <span class="eyebrow reveal">My Works</span>
     </div>
-    <div class="work-grid">
+    <div class="work-grid stagger">
       <a class="card reveal" href="nereye.html">
         <div class="frame"><img src="assets/nereye.jpg" alt="Nereye"></div>
         <h3>Nereye</h3>
@@ -351,6 +377,68 @@
 (function(){var n=document.querySelector('nav'),t=document.querySelector('.nav-toggle');if(!n||!t)return;
 t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o);});
 n.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){n.classList.remove('open');t.setAttribute('aria-expanded','false');});});
+})();
+</script>
+<script>
+/* ---- effects: hero stagger, parallax, custom cursor, card stagger ---- */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* hero staggered intro */
+  var hw = document.querySelectorAll('.hero .hw');
+  hw.forEach(function(el,i){ el.style.transitionDelay = (0.12 + i*0.085) + 's'; });
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      var hero = document.querySelector('.hero'); if(hero) hero.classList.add('loaded');
+    });
+  });
+
+  /* staggered scroll-reveal for work cards */
+  document.querySelectorAll('.work-grid .card').forEach(function(c,i){
+    c.style.setProperty('--d', (i*0.12) + 's');
+  });
+
+  /* parallax on about objects (skip spinning CD) */
+  if(!reduce){
+    var pObjs = Array.prototype.slice.call(document.querySelectorAll('.hero-obj:not(.obj-cd) img'));
+    var speeds = [0.16,0.30,0.22,0.12,0.26,0.18,0.34,0.20];
+    pObjs.forEach(function(img,i){ img.dataset.sp = speeds[i % speeds.length]; });
+    var ticking = false;
+    function parallax(){
+      var vh = window.innerHeight;
+      pObjs.forEach(function(img){
+        var r = img.getBoundingClientRect();
+        if(r.bottom < -200 || r.top > vh + 200) return;
+        var rel = (r.top + r.height/2 - vh/2) / vh;
+        var sp = parseFloat(img.dataset.sp || 0.18);
+        img.style.transform = 'translateY(' + (rel * sp * -130).toFixed(1) + 'px)';
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(parallax); }
+    }, {passive:true});
+    window.addEventListener('resize', parallax);
+    parallax();
+  }
+
+  /* custom "View" cursor over project cards */
+  if(!reduce && !window.matchMedia('(hover:none)').matches && !window.matchMedia('(max-width:760px)').matches){
+    var dot = document.createElement('div');
+    dot.className = 'cursor-dot'; dot.textContent = 'View';
+    document.body.appendChild(dot);
+    var mx = window.innerWidth/2, my = window.innerHeight/2, cx = mx, cy = my;
+    window.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; }, {passive:true});
+    (function loop(){
+      cx += (mx-cx)*0.18; cy += (my-cy)*0.18;
+      dot.style.left = cx + 'px'; dot.style.top = cy + 'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('.card').forEach(function(c){
+      c.addEventListener('mouseenter', function(){ dot.classList.add('show'); });
+      c.addEventListener('mouseleave', function(){ dot.classList.remove('show'); });
+    });
+  }
 })();
 </script>
 </body>
