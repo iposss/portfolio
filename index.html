@@ -7,12 +7,12 @@
 <meta name="description" content="İpek Nal — designer based in Istanbul. UI/UX & digital product design." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#faf7f0;              /* light warm cream */
+    --bg:#faf7f0;              /* warm cream — matches project pages */
     --ink:#111111;
-    --muted:#807b71;
+    --muted:#5e574b;          /* darkened — passes WCAG AA on cream */
     --accent:#c01d18;          /* deeper red */
     --accent-dark:#971310;
     --line:#ece6da;
@@ -24,14 +24,14 @@
   body{
     font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
     background:var(--bg);color:var(--ink);
-    line-height:1.6;font-size:17px;font-weight:300;
+    line-height:1.6;font-size:17px;font-weight:400;
     -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
   }
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
   a{color:inherit;text-decoration:none}
 
   /* ---- type system ---- */
-  .eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:600}
   h1{font-family:'Cormorant',Georgia,serif;font-weight:400;
      font-size:clamp(52px,10vw,116px);line-height:1.0;letter-spacing:-.01em}
   h2{font-family:'Cormorant',Georgia,serif;font-weight:500;
@@ -44,16 +44,19 @@
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;
     max-width:none;padding:0 clamp(28px,5vw,80px)}
-  .brand{font-family:'Cormorant',Georgia,serif;font-size:clamp(19px,4.5vw,22px);font-weight:600;letter-spacing:0}
+  .brand{font-family:'Cormorant',Georgia,serif;font-size:clamp(20px,4.5vw,23px);font-weight:700;letter-spacing:0}
   .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500}
   .nav-links a{color:var(--muted);transition:color .2s}
-  .nav-links a:hover{color:var(--accent)}
+  .nav-links a:hover{color:var(--ink)}
+  /* keyboard focus ring */
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);
+    outline-offset:3px;border-radius:2px}
 
   /* ---- HERO (clean, kinetic heading) ---- */
-  .hero{position:relative;padding:clamp(40px,6vw,72px) 0;overflow:hidden}
-  .hero .wrap{position:relative;min-height:clamp(440px,58vh,620px);
-    display:flex;align-items:center;justify-content:center}
-  .hero-center{text-align:center;max-width:none;margin:0 auto;position:relative;z-index:2}
+  .hero{position:relative;padding:clamp(64px,9vw,116px) 0 clamp(40px,6vw,72px);overflow:hidden}
+  .hero .wrap{position:relative;min-height:clamp(280px,calc(100svh - 420px),580px);
+    display:flex;align-items:center;justify-content:flex-start}
+  .hero-center{text-align:left;max-width:none;margin:0;position:relative;z-index:2}
   /* edge cut-out objects — hover animated (no float) */
   .hero-obj{position:absolute;z-index:1;cursor:default;
     transition:transform .45s cubic-bezier(.22,.61,.36,1),filter .45s ease}
@@ -73,32 +76,35 @@
   .obj-cam    {width:clamp(130px,14vw,174px);top:33%; right:-8%;z-index:3;--r:5deg;transform:rotate(var(--r));--fx:58vw;--fy:0px;--pd:3.45s}
   .obj-candle {width:clamp(48px,5vw,68px);   top:48%; right:8%; z-index:3;--r:3deg;transform:rotate(var(--r));--fx:46vw;--fy:20px;--pd:4.7s}
   .obj-plant  {width:clamp(232px,26vw,330px);bottom:0%;right:-7%;--r:-3deg;transform:rotate(var(--r));--fx:60vw;--fy:30px;--pd:2.2s}
-  .hero .heading{font-family:'Cormorant',Georgia,serif;font-weight:300;color:var(--ink);
-    font-size:clamp(40px,6.8vw,88px);line-height:1.08;letter-spacing:0;
-    margin:0 auto;max-width:none;white-space:nowrap}
+  .hero .heading{font-family:'Cormorant',Georgia,serif;font-weight:500;color:var(--ink);
+    font-size:clamp(44px,7.2vw,88px);line-height:1.04;letter-spacing:0;
+    margin:0;max-width:none;white-space:nowrap}
+  .hero-sub{font-family:'Cormorant',Georgia,serif;font-weight:500;color:var(--ink);
+    font-size:clamp(24px,3.6vw,40px);line-height:1.2;letter-spacing:0;
+    margin:clamp(10px,1.4vw,16px) 0 0}
   .kinetic-word{color:var(--accent);font-family:'Cormorant',Georgia,serif;
     font-weight:400;font-style:italic}
   .kinetic-word::after{content:'|';color:var(--accent);font-style:normal;
-    font-weight:300;margin-left:3px;animation:caret 1s step-end infinite}
+    font-weight:400;margin-left:3px;animation:caret 1s step-end infinite}
   @keyframes caret{0%,100%{opacity:1}50%{opacity:0}}
-  .hero .lead{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--muted);
+  .hero .lead{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted);
     font-size:clamp(17px,2vw,21px);line-height:1.5;margin:clamp(20px,2.6vw,30px) auto 0;
     max-width:none;white-space:nowrap}
   .hero-cta{margin-top:clamp(30px,3.6vw,44px)}
   .btn-red{display:inline-block;background:var(--accent);color:#fff;
-    font-family:'DM Sans',sans-serif;font-weight:700;font-size:17px;
-    padding:16px 40px;border-radius:999px;border:1px solid var(--ink);
-    box-shadow:0 6px 16px rgba(0,0,0,.16);
+    font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;letter-spacing:.01em;
+    padding:13px 32px;border-radius:999px;border:0.5px solid var(--ink);
+    box-shadow:0 3px 10px rgba(0,0,0,.12);
     transition:background .2s,transform .2s,box-shadow .2s}
   .btn-red:hover{background:var(--accent-dark);transform:translateY(-2px);
-    box-shadow:0 10px 22px rgba(0,0,0,.22)}
+    box-shadow:0 6px 16px rgba(0,0,0,.18)}
 
   /* ---- MARQUEE (thinner, dot separator, sentence intact) ---- */
   .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);padding:11px 0;margin-top:clamp(40px,7vw,96px)}
   .marquee-track{display:inline-block;will-change:transform;animation:scroll 60s linear infinite}
   .marquee:hover .marquee-track{animation-play-state:paused}
-  .marquee .item{font-family:'DM Sans',sans-serif;font-weight:300;
+  .marquee .item{font-family:'DM Sans',sans-serif;font-weight:500;
     font-size:clamp(11px,1.5vw,17px);color:#000;letter-spacing:.06em;text-transform:uppercase}
   .marquee .dot{color:var(--accent);padding:0 clamp(12px,2.2vw,22px);font-weight:400}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -106,27 +112,32 @@
   /* ---- section base ---- */
   section{padding:var(--gap) 0;border-top:1px solid var(--line)}
   #work{border-top:none;padding-top:clamp(44px,5.5vw,66px)}
+  #work .sec-head{text-align:left}
   .sec-head{text-align:center;margin-bottom:clamp(22px,2.8vw,34px)}
 
   /* ---- WORK (uniform, b&w) ---- */
   .work-grid{display:grid;grid-template-columns:1fr;gap:clamp(48px,6vw,76px);
     max-width:600px;margin:0 auto}
-  .card{display:block;text-align:center}
+  .card{display:block;text-align:left}
   .card .frame{aspect-ratio:4/3;width:100%;border-radius:8px;overflow:hidden;
-    background:#f2ede3;box-shadow:0 14px 30px rgba(0,0,0,.12)}
+    background:#f2ede3;border:0.5px solid var(--ink);box-shadow:0 14px 30px rgba(0,0,0,.12)}
   .card .frame img{width:100%;height:100%;object-fit:cover;display:block;
-    filter:grayscale(100%);transition:transform .55s ease}
-  .card:hover .frame img{transform:scale(1.04)}
-  .card h3{margin:22px 0 0}
-  .card .cat{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;
-    color:var(--accent);font-weight:600;margin-top:8px}
-  .card .desc{font-size:15px;color:var(--ink);font-weight:300;line-height:1.55;max-width:40ch;margin:3px auto 0}
+    filter:grayscale(100%);transition:transform .55s ease,filter .55s ease}
+  .card:hover .frame img{transform:scale(1.04);filter:grayscale(0)}
+  .card .num-tag{display:block;font-family:'DM Sans',sans-serif;font-size:13px;
+    font-weight:500;letter-spacing:.03em;color:var(--ink);margin-top:18px}
+  .card h3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:24px;letter-spacing:-.01em;margin:5px 0 0}
+  .see-all-wrap{max-width:600px;margin:clamp(40px,5vw,60px) auto 0;text-align:center}
+  .see-all{display:inline-block;font-family:'DM Sans',sans-serif;font-weight:600;
+    font-size:15px;letter-spacing:.01em;color:var(--ink);transition:color .2s}
+  .see-all:hover{color:var(--accent)}
 
   /* ---- ABOUT (objects clustered left & right of the text) ---- */
   .about{text-align:center}
-  .about .wrap{position:relative;min-height:clamp(540px,62vh,680px);
+  .about-stage{position:relative;min-height:clamp(480px,56vh,620px);
     display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .about .sec-head{margin-bottom:clamp(2px,0.5vw,7px)}
+  .about-head-wrap{padding-top:0;padding-bottom:clamp(8px,1.6vw,18px)}
+  .about .sec-head{text-align:left}
   .about .eyebrow,#work .eyebrow{font-family:'Cormorant',Georgia,serif;font-weight:600;display:inline-block;line-height:1.05;
     font-size:clamp(26px,3.4vw,38px);letter-spacing:.02em;text-transform:none}
   .polaroid{display:inline-block;background:#fdfcf7;padding:11px 11px 38px;border-radius:3px;
@@ -178,9 +189,9 @@
   .contact .email:hover{border-color:var(--accent)}
   .socials{display:flex;gap:30px;justify-content:center;font-size:16px;font-weight:500}
   .socials a{color:var(--muted);transition:color .2s}
-  .socials a:hover{color:var(--accent)}
+  .socials a:hover{color:var(--ink)}
 
-  #about{padding-bottom:clamp(40px,6vw,66px)}
+  #about{padding-top:clamp(20px,3vw,38px);padding-bottom:clamp(40px,6vw,66px)}
 
   footer{background:var(--bg);border-top:1px solid var(--line);text-align:center;padding:22px 0;
     font-size:13px;color:var(--muted)}
@@ -206,6 +217,7 @@
   }
   @media(max-width:900px){
     .hero-obj{display:none}
+    .about-stage{min-height:auto;padding-top:clamp(20px,5vw,40px);padding-bottom:clamp(20px,5vw,40px)}
   }
   @media(max-width:760px){
     .nav-links{display:none}
@@ -218,10 +230,11 @@
     .about{text-align:left}
     .about .wrap{min-height:auto;align-items:stretch;justify-content:flex-start;
       padding-top:clamp(36px,9vw,64px);padding-bottom:clamp(36px,9vw,64px)}
-    .about .sec-head{text-align:left}
+    .about .sec-head{position:static;text-align:left}
     .about-body{margin:0;max-width:none}
     .about-body p{font-size:16.5px}
     .about-body p:first-child{font-size:21px;font-weight:400;color:var(--ink);line-height:1.5}
+    .about-body .hl{font-family:'Cormorant',Georgia,serif;font-weight:600;font-style:italic;font-size:1.08em}
   }
 
   /* ---- mobile nav / hamburger ---- */
@@ -264,6 +277,11 @@
   @media(prefers-reduced-motion:reduce){
     .hero .hw{transition:none;opacity:1;transform:none}
     .cursor-dot{display:none}
+    .marquee-track{animation:none}
+    .obj-cd img{animation:none}
+    .kinetic-word::after{display:none}
+    .reveal{transition:none;opacity:1;transform:none}
+    html{scroll-behavior:auto}
   }
 </style>
 </head>
@@ -273,7 +291,7 @@
   <div class="wrap">
     <a href="#top" class="brand">İpek Nal</a>
     <div class="nav-links">
-      <a href="work.html">Works</a>
+      <a href="#work">Works</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -287,10 +305,8 @@
 <header class="hero" id="hero">
   <div class="wrap">
     <div class="hero-center">
-      <h1 class="heading"><span class="hw">I</span> <span class="hw">design</span> <span class="kinetic-word hw">websites</span><br><span class="hw">to</span> <span class="hw">bring</span> <span class="hw">your</span> <span class="hw">ideas</span> <span class="hw">to</span> <span class="hw">life</span></h1>
-      <div class="hero-cta hw">
-        <a href="#contact" class="btn-red">Start Project</a>
-      </div>
+      <h1 class="heading" aria-label="I design websites and apps"><span class="hw" aria-hidden="true">I</span> <span class="hw" aria-hidden="true">design</span> <span class="kinetic-word hw" aria-hidden="true">websites</span></h1>
+      <p class="hero-sub hw">for brands &amp; small businesses</p>
     </div>
   </div>
 </header>
@@ -298,12 +314,10 @@
 <!-- MARQUEE -->
 <div class="marquee reveal">
   <div class="marquee-track">
-    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span>
-    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span>
-    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span>
-    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span>
-    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span>
-    <span class="item">Wireframing &amp; Prototyping</span><span class="dot">•</span> <span class="item">Design Systems</span><span class="dot">•</span> <span class="item">User Research</span><span class="dot">•</span> <span class="item">Responsive Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span>
+    <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span>
+    <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span>
+    <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span>
+    <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span> <span class="item">Web Design</span><span class="dot">•</span> <span class="item">Framer Development</span><span class="dot">•</span> <span class="item">UX Design</span><span class="dot">•</span>
   </div>
 </div>
 
@@ -311,31 +325,39 @@
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow reveal">My Works</span>
+      <span class="eyebrow reveal">Selected Works</span>
     </div>
     <div class="work-grid stagger">
       <a class="card reveal" href="nereye.html">
         <div class="frame"><img src="assets/nereye.jpg" alt="Nereye"></div>
+        <span class="num-tag">01 — Civic Tool · Framer</span>
         <h3>Nereye</h3>
-        <p class="desc">Nereye is a live civic tool that helps Istanbul residents find the nearest recycling and waste disposal points by category and district.</p>
       </a>
       <a class="card reveal" href="growth.html">
         <div class="frame"><img src="assets/growth.jpg" alt="Growth"></div>
+        <span class="num-tag">02 — Mobile App · UI/UX</span>
         <h3>Growth</h3>
-        <p class="desc">Growth is a supportive habit-building app focused on flexibility and stability.</p>
       </a>
       <a class="card reveal" href="blend.html">
         <div class="frame"><img src="assets/blend.jpg" alt="Blend"></div>
+        <span class="num-tag">03 — Landing Page · Concept</span>
         <h3>Blend</h3>
-        <p class="desc">Blend is a landing page concept created for a modern skincare brand.</p>
       </a>
+    </div>
+    <div class="see-all-wrap">
+      <a class="see-all reveal" href="work.html">All projects &rarr;</a>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="about">
-  <div class="wrap">
+  <div class="wrap about-head-wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">About Me</span>
+    </div>
+  </div>
+  <div class="wrap about-stage">
     <!-- left cluster -->
     <span class="hero-obj obj-note"><img src="assets/defter.png" alt="" aria-hidden="true"></span>
     <span class="hero-obj obj-pen"><img src="assets/kalem.png" alt="" aria-hidden="true"></span>
@@ -347,11 +369,8 @@
     <span class="hero-obj obj-candle"><img src="assets/candle.png" alt="" aria-hidden="true"></span>
     <span class="hero-obj obj-plant"><img src="assets/plants.png" alt="" aria-hidden="true"></span>
     <span class="hero-obj obj-cd"><img src="assets/cd.png" alt="" aria-hidden="true"></span>
-    <div class="sec-head">
-      <span class="eyebrow reveal">About Me</span>
-    </div>
     <div class="about-body reveal">
-      <p>Hey! It's İpek, designer based in İstanbul. I help brands and small businesses to turn their visions into digital products: websites and apps.</p>
+      <p>Hey! It's İpek, designer based in İstanbul.<br>I help brands and small businesses to turn their visions into digital products: <span class="hl">websites</span> and <span class="hl">apps</span>.</p>
       <p>Studied film design at fine arts faculty and that's where I discovered my love for visualizing ideas and building digital products from scratch. I love capturing moments, collecting memories, and every form of creativity.</p>
       <p>I design from an idea to a live product that actually works. Detail-driven and always up for a new project.</p>
     </div>
@@ -372,7 +391,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> İpek Nal <span style="color:var(--accent)">•</span> made with love, powered by coffee <span style="color:var(--accent)">•</span></div>
+  <div class="wrap">© <span id="year"></span> İpek Nal <span style="color:var(--muted)">•</span> made with love, powered by coffee <span style="color:var(--muted)">•</span></div>
 </footer>
 
 <script>
@@ -405,6 +424,7 @@
   (function(){
     var word = document.querySelector('.kinetic-word');
     if(!word) return;
+    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){ word.textContent = 'websites'; return; }
     var words = ['websites','apps'];
     var wi = 0, ci = 0, deleting = false;
     word.textContent = '';
