@@ -9,35 +9,39 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#faf7f0;--ink:#111111;--muted:#807b71;--accent:#c01d18;--accent-dark:#971310;--line:#ece6da;--maxw:1120px}
+  :root{--bg:#faf7f0;--ink:#111111;--muted:#5e574b;--accent:#c01d18;--accent-dark:#971310;--line:#ece6da;--maxw:1120px;--text-body:18px;--text-ui:15px;--text-label:13px;--track-caps:.12em}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);
-    line-height:1.6;font-size:17px;font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+    line-height:1.6;font-size:var(--text-body);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
   a{color:inherit;text-decoration:none}
+  .grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:180px 180px}
 
   nav{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-  .brand{font-family:'Cormorant',Georgia,serif;font-size:clamp(19px,4.5vw,22px);font-weight:600}
-  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;
+    max-width:none;padding:0 clamp(28px,5vw,80px)}
+  .brand{font-family:'Cormorant',Georgia,serif;font-size:clamp(20px,4.5vw,23px);font-weight:700}
+  .nav-links{display:flex;gap:34px;font-size:var(--text-ui);font-weight:500}
   .nav-links a{color:var(--muted);transition:color .2s}
   .nav-links a:hover,.nav-links a.active{color:var(--accent)}
 
   .detail-head{text-align:center;padding:clamp(64px,10vw,120px) 0 clamp(28px,4vw,46px)}
-  .detail-head .p-num{font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.18em;color:var(--accent);font-weight:500}
+  .detail-head .p-num{font-family:'DM Sans',sans-serif;font-size:var(--text-label);letter-spacing:var(--track-caps);color:var(--accent);font-weight:500}
   .detail-head .title{font-family:'Cormorant',Georgia,serif;font-weight:400;color:var(--ink);
     font-size:clamp(46px,8vw,96px);line-height:1;letter-spacing:-.01em;margin-top:10px}
-  .detail-head .cat{font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  .detail-head .cat{font-family:'DM Sans',sans-serif;font-size:var(--text-label);letter-spacing:var(--track-caps);text-transform:uppercase;
     color:var(--muted);font-weight:500;margin-top:14px;display:inline-block}
 
   .cover{max-width:var(--maxw);margin:0 auto;padding:0 28px}
   .cover img{width:100%;border-radius:12px;display:block;border:1px solid var(--line)}
 
   .detail-body{max-width:720px;margin:0 auto;padding:clamp(38px,6vw,68px) 28px 0;text-align:center}
-  .detail-body .lead{font-family:'DM Sans',sans-serif;font-weight:300;font-size:clamp(19px,2.3vw,25px);
+  .detail-body .lead{font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(19px,2.3vw,25px);
     line-height:1.45;color:var(--ink);margin-bottom:24px}
-  .detail-body p{color:#3a3a3a;font-size:17px;line-height:1.75;margin-bottom:16px}
+  .detail-body p{color:#3a3a3a;font-size:var(--text-body);line-height:1.75;margin-bottom:16px}
 
   /* gallery — multiple images for this project */
   .gallery{max-width:880px;margin:clamp(36px,5vw,60px) auto 0;padding:0 28px;display:grid;gap:clamp(20px,3vw,34px)}
@@ -52,10 +56,10 @@
   .embed-wrap iframe{max-width:100%;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
 
   .detail-foot{text-align:center;padding:clamp(30px,5vw,60px) 0;border-top:1px solid var(--line)}
-  .back-link{display:inline-block;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);transition:color .2s}
+  .back-link{display:inline-block;font-family:'DM Sans',sans-serif;font-size:var(--text-ui);color:var(--muted);transition:color .2s}
   .back-link:hover{color:var(--accent)}
 
-  footer{border-top:1px solid var(--line);text-align:center;padding:40px 0;font-size:13px;color:var(--muted)}
+  footer{border-top:1px solid var(--line);text-align:center;padding:40px 0;font-size:var(--text-label);color:var(--muted)}
 
   .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
   .reveal.in{opacity:1;transform:translateY(0)}
@@ -75,11 +79,12 @@
       gap:0;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);
       max-height:0;overflow:hidden;transition:max-height .34s ease;box-shadow:0 12px 18px rgba(0,0,0,.06)}
     nav.open .nav-links{max-height:320px}
-    .nav-links a{padding:16px 28px;border-top:1px solid var(--line);font-size:16px;font-weight:500}
+    .nav-links a{padding:16px 28px;border-top:1px solid var(--line);font-size:var(--text-ui);font-weight:500}
   }
 </style>
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
 
 <nav>
   <div class="wrap">
